@@ -1,4 +1,4 @@
-/**************************************************************
+/**
  * pairs(names):
  *
  * - It accepts an array of names:
@@ -16,9 +16,9 @@
  *
  * - It returns an empty array if it gets passed nothing:
  *       pairs() returns []
- ****************************************************************/
+ **/
 
-/**********************************************
+/**
  * READ ME!!!!
  *
  * We've included this handy method for you.
@@ -31,13 +31,24 @@
  * let random = numbers.getRandom();  // randomly returns something from the array. e.g. 3
  * console.log(random); // 3 (the random element)
  * console.log(numbers);  // [1, 2, 4] (missing the random element)
- ************************************************/
-Array.prototype.getRandom = function () {
+ **/
+ Array.prototype.getRandom = function () {
   return this.splice(Math.floor(Math.random() * this.length), 1)[0];
 };
 
 function pairs(names) {
-  // Your code goes here
+  if (names === [] || !names) return [];
+  let newPairs = [];
+
+  let i = 0;
+  while (i < parseInt(names.length / 2))
+    newPairs.push([names.getRandom(), names.getRandom()]);
+  if (!Number.isInteger(names.length / 2)) newPairs.push([names.getRandom()]);
+
+  while (i < Math.round(names.length / 2))
+    newPairs.push([names.getRandom(), names.getRandom()]);
+
+  return newPairs;
 }
 
 module.exports = pairs;
